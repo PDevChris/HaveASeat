@@ -14,7 +14,7 @@ Built for **PocketMine-MP 5.0.0+**.
 
 * Sit on **stair blocks or slabs** by right-clicking
 
-* Optional **/sit** command (allows players to sit without clicking a stair)
+* **/sit** command to enable individual player sitting (cooldown support)
 
 * Prevents multiple players from sitting on the same stair
 
@@ -94,9 +94,10 @@ Players will automatically stand up when:
 
 ## 🔐 Permissions
 
-| Permission              | Description          | Default |
-| ----------------------- | -------------------- | ------- |
-| `haveaseat.toggle`         | Allows player to sit | true    |
+| Permission                 | Description                     | Default |
+| -------------------------- | --------------------------------| ------- |
+| `haveaseat.toggle`         | Allows players to toggle their  |         |
+|                            | ability to sit on blocks        | true    |
 
 ---
 
@@ -104,15 +105,6 @@ Players will automatically stand up when:
 
 * ✅ PocketMine-MP **5.0.0+**
 * ✅ PHP **8.1+**
-
----
-
-## 🚀 Planned Features
-
-* Permission-based per-world control
-* Sitting on slabs and custom blocks
-* Optional animations via resource pack
-* Player cooldowns
 
 ---
 
