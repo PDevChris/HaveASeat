@@ -96,8 +96,7 @@ Players will automatically stand up when:
 
 | Permission              | Description          | Default |
 | ----------------------- | -------------------- | ------- |
-| `haveaseat.use`         | Allows player to sit | true    |
-| `haveaseat.command.sit` | Allows use of /sit   | true    |
+| `haveaseat.toggle`         | Allows player to sit | true    |
 
 ---
 
