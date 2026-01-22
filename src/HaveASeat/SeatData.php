@@ -54,7 +54,7 @@ class SeatData {
         $addPacket->headYaw = 0.0;
         $addPacket->attributes = [];
         $addPacket->metadata = [
-            MetadataProperty::create(EntityMetadataProperties::FLAGS, new LongMetadataProperty((1 << EntityMetadataFlags::IMMOBILE) | (1 << EntityMetadataFlags::INVISIBLE) | (1 << EntityMetadataFlags::SILENT)))
+            new MetadataProperty(EntityMetadataProperties::FLAGS, new LongMetadataProperty((1 << EntityMetadataFlags::IMMOBILE) | (1 << EntityMetadataFlags::INVISIBLE) | (1 << EntityMetadataFlags::SILENT)))
         ];
 
         $linkPacket = new SetActorLinkPacket();
@@ -100,7 +100,7 @@ class SeatData {
         $addPacket->headYaw = 0.0;
         $addPacket->attributes = [];
         $addPacket->metadata = [
-            MetadataProperty::create(EntityMetadataProperties::FLAGS, new LongMetadataProperty((1 << EntityMetadataFlags::IMMOBILE) | (1 << EntityMetadataFlags::INVISIBLE) | (1 << EntityMetadataFlags::SILENT)))
+            new MetadataProperty(EntityMetadataProperties::FLAGS, new LongMetadataProperty((1 << EntityMetadataFlags::IMMOBILE) | (1 << EntityMetadataFlags::INVISIBLE) | (1 << EntityMetadataFlags::SILENT)))
         ];
 
         $linkPacket = new SetActorLinkPacket();
