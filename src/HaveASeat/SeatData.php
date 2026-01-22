@@ -7,6 +7,7 @@ namespace HaveASeat;
 use pocketmine\player\Player;
 use pocketmine\block\Block;
 use pocketmine\block\Slab;
+use pocketmine\block\utils\SlabType;
 use pocketmine\math\Vector3;
 use pocketmine\network\mcpe\protocol\AddActorPacket;
 use pocketmine\network\mcpe\protocol\SetActorLinkPacket;
@@ -35,7 +36,7 @@ class SeatData {
     }
 
     public function sit(): void {
-        $yOffset = $this->block instanceof Slab ? ($this->block->isTop() ? 1.0 : 0.5) : 1.5;
+        $yOffset = $this->block instanceof Slab ? ($this->block->getSlabType() === SlabType::TOP ? 1.0 : 0.5) : 1.5;
         $pos = $this->block->getPosition()->add(0.5, $yOffset, 0.5);
 
         $addPacket = new AddActorPacket();
@@ -81,7 +82,7 @@ class SeatData {
     }
 
     public function sendTo(Player $target): void {
-        $yOffset = $this->block instanceof Slab ? ($this->block->isTop() ? 1.0 : 0.5) : 1.5;
+        $yOffset = $this->block instanceof Slab ? ($this->block->getSlabType() === SlabType::TOP ? 1.0 : 0.5) : 1.5;
         $pos = $this->block->getPosition()->add(0.5, $yOffset, 0.5);
 
         $addPacket = new AddActorPacket();
