@@ -81,13 +81,14 @@ try-to-sit-already-inuse: "This @b is already used by @p"
 ## 🕹️ Usage
 
 * **Right-click** a stair block to sit
-* Use **/sit** to sit on the stair you are looking at
+* Use **/sit** to enable/disable sitting
 
 Players will automatically stand up when:
 
 * They move
 * The stair block breaks
 * They disconnect
+* Shift key
 * They change worlds
 
 ---
