@@ -53,7 +53,7 @@ class SeatData {
         ];
 
         $linkPacket = new SetActorLinkPacket();
-        $linkPacket->link = new EntityLink($this->entityId, $this->player->getId(), EntityLink::TYPE_RIDER, true, true, null);
+        $linkPacket->link = new EntityLink($this->entityId, $this->player->getId(), EntityLink::TYPE_RIDER, true, true, 0.0);
 
         $players = $this->player->getWorld()->getPlayers();
         foreach ($players as $p) {
@@ -66,7 +66,7 @@ class SeatData {
 
     public function stand(): void {
         $linkPacket = new SetActorLinkPacket();
-        $linkPacket->link = new EntityLink($this->entityId, $this->player->getId(), EntityLink::TYPE_REMOVE, true, true, null);
+        $linkPacket->link = new EntityLink($this->entityId, $this->player->getId(), EntityLink::TYPE_REMOVE, true, true, 0.0);
 
         $removePacket = new RemoveActorPacket();
         $removePacket->actorUniqueId = $this->entityId;
@@ -99,7 +99,7 @@ class SeatData {
         ];
 
         $linkPacket = new SetActorLinkPacket();
-        $linkPacket->link = new EntityLink($this->entityId, $this->player->getId(), EntityLink::TYPE_RIDER, true, true, null);
+        $linkPacket->link = new EntityLink($this->entityId, $this->player->getId(), EntityLink::TYPE_RIDER, true, true, 0.0);
 
         $target->getNetworkSession()->sendDataPacket($addPacket);
         $target->getNetworkSession()->sendDataPacket($linkPacket);
