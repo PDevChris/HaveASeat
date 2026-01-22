@@ -1,4 +1,4 @@
-when# HaveASeat Configuration File
+# HaveASeat Configuration File
 
 # Apply to all worlds or specific worlds
 # Set to true to enable in all worlds, or a comma-separated list of world names (e.g., world, lobby)
