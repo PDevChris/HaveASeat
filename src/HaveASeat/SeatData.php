@@ -16,6 +16,7 @@ use pocketmine\network\mcpe\protocol\types\entity\EntityLink;
 use pocketmine\network\mcpe\protocol\types\entity\LongMetadataProperty;
 use pocketmine\network\mcpe\protocol\types\entity\EntityMetadataProperties;
 use pocketmine\network\mcpe\protocol\types\entity\EntityMetadataFlags;
+use pocketmine\network\mcpe\protocol\types\entity\PropertySyncData;
 use pocketmine\entity\Entity;
 
 class SeatData {
@@ -55,7 +56,7 @@ class SeatData {
         $addPacket->metadata = [
             EntityMetadataProperties::FLAGS => new LongMetadataProperty((1 << EntityMetadataFlags::IMMOBILE) | (1 << EntityMetadataFlags::INVISIBLE) | (1 << EntityMetadataFlags::SILENT))
         ];
-        $addPacket->syncedProperties = [];
+        $addPacket->syncedProperties = new PropertySyncData([], [], []);
 
         $linkPacket = new SetActorLinkPacket();
         $linkPacket->link = new EntityLink($this->entityId, $this->player->getId(), EntityLink::TYPE_RIDER, true, true, 0.0);
@@ -102,7 +103,7 @@ class SeatData {
         $addPacket->metadata = [
             EntityMetadataProperties::FLAGS => new LongMetadataProperty((1 << EntityMetadataFlags::IMMOBILE) | (1 << EntityMetadataFlags::INVISIBLE) | (1 << EntityMetadataFlags::SILENT))
         ];
-        $addPacket->syncedProperties = [];
+        $addPacket->syncedProperties = new PropertySyncData([], [], []);
 
         $linkPacket = new SetActorLinkPacket();
         $linkPacket->link = new EntityLink($this->entityId, $this->player->getId(), EntityLink::TYPE_RIDER, true, true, 0.0);
