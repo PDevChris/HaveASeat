@@ -13,7 +13,6 @@ use pocketmine\network\mcpe\protocol\AddActorPacket;
 use pocketmine\network\mcpe\protocol\SetActorLinkPacket;
 use pocketmine\network\mcpe\protocol\RemoveActorPacket;
 use pocketmine\network\mcpe\protocol\types\entity\EntityLink;
-use pocketmine\network\mcpe\protocol\types\entity\MetadataProperty;
 use pocketmine\network\mcpe\protocol\types\entity\LongMetadataProperty;
 use pocketmine\network\mcpe\protocol\types\entity\EntityMetadataProperties;
 use pocketmine\network\mcpe\protocol\types\entity\EntityMetadataFlags;
@@ -54,7 +53,7 @@ class SeatData {
         $addPacket->headYaw = 0.0;
         $addPacket->attributes = [];
         $addPacket->metadata = [
-            new MetadataProperty(EntityMetadataProperties::FLAGS, new LongMetadataProperty((1 << EntityMetadataFlags::IMMOBILE) | (1 << EntityMetadataFlags::INVISIBLE) | (1 << EntityMetadataFlags::SILENT)))
+            EntityMetadataProperties::FLAGS => new LongMetadataProperty((1 << EntityMetadataFlags::IMMOBILE) | (1 << EntityMetadataFlags::INVISIBLE) | (1 << EntityMetadataFlags::SILENT))
         ];
 
         $linkPacket = new SetActorLinkPacket();
@@ -100,7 +99,7 @@ class SeatData {
         $addPacket->headYaw = 0.0;
         $addPacket->attributes = [];
         $addPacket->metadata = [
-            new MetadataProperty(EntityMetadataProperties::FLAGS, new LongMetadataProperty((1 << EntityMetadataFlags::IMMOBILE) | (1 << EntityMetadataFlags::INVISIBLE) | (1 << EntityMetadataFlags::SILENT)))
+            EntityMetadataProperties::FLAGS => new LongMetadataProperty((1 << EntityMetadataFlags::IMMOBILE) | (1 << EntityMetadataFlags::INVISIBLE) | (1 << EntityMetadataFlags::SILENT))
         ];
 
         $linkPacket = new SetActorLinkPacket();
