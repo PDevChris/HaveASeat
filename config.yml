@@ -36,7 +36,7 @@ send-tip-when-sit-message: "Sitting on @b at @x, @y, @z"
 try-to-sit-already-inuse: "This seat is used by @p"
 
 # List of blocks players can sit on
-# Use "stairs" for any stair block, "slab" for any slab block, or specific block names
+# Use "stairs" for any stair block, or specific block names like "Quartz Slab"
 allowed-blocks:
   - stairs
-  - slab
+  - "Quartz Slab"

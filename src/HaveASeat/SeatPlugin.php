@@ -12,6 +12,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\world\World;
 use pocketmine\block\Stairs;
+use pocketmine\block\Slab;
 use pocketmine\block\Block;
 use pocketmine\math\Vector3;
 use pocketmine\event\player\PlayerInteractEvent;
@@ -94,7 +95,10 @@ class SeatPlugin extends PluginBase implements Listener {
             if (strtolower($type) === "stairs" && $block instanceof Stairs) {
                 return true;
             }
-            if (strtolower($block->getName()) === strtolower($type)) {
+            if (strtolower($type) === "slab" && $block instanceof Slab) {
+                return true;
+            }
+            if (str_contains(strtolower($block->getName()), strtolower($type))) {
                 return true;
             }
         }
@@ -114,7 +118,7 @@ class SeatPlugin extends PluginBase implements Listener {
         if (!$this->isToggleEnabled($player)) {
             return false;
         }
-        if (!$this->isAllowedUpsideDown() && $block->isUpsideDown()) {
+        if ($block instanceof Stairs && !$this->isAllowedUpsideDown() && $block->isUpsideDown()) {
             return false;
         }
         if (!$this->isAllowedHighHeight() && $player->getPosition()->getY() < $block->getPosition()->getY()) {
