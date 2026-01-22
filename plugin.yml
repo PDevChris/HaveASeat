@@ -1,14 +1,12 @@
 ---
-name: StairSeat
-api:
-- 3.14.1
-main: korado531m7\StairSeat\StairSeat
-version: 1.5.10
-author: korado531m7
-description: Enable to sit on the stair block
-mcpe-protocol: 440
+name: HaveASeat
+api: 5.0.0
+main: HaveASeat\SeatPlugin
+version: 1.0.0
+author: PDevChris
+description: Allow players to sit on stair blocks
 permissions:
-  stairseat.toggle:
-    description: Toggle to sit
+  haveaseat.toggle:
+    description: Toggle the ability to sit on stairs
     default: true
 ...
