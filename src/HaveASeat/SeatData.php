@@ -55,6 +55,7 @@ class SeatData {
         $addPacket->metadata = [
             EntityMetadataProperties::FLAGS => new LongMetadataProperty((1 << EntityMetadataFlags::IMMOBILE) | (1 << EntityMetadataFlags::INVISIBLE) | (1 << EntityMetadataFlags::SILENT))
         ];
+        $addPacket->syncedProperties = [];
 
         $linkPacket = new SetActorLinkPacket();
         $linkPacket->link = new EntityLink($this->entityId, $this->player->getId(), EntityLink::TYPE_RIDER, true, true, 0.0);
@@ -101,6 +102,7 @@ class SeatData {
         $addPacket->metadata = [
             EntityMetadataProperties::FLAGS => new LongMetadataProperty((1 << EntityMetadataFlags::IMMOBILE) | (1 << EntityMetadataFlags::INVISIBLE) | (1 << EntityMetadataFlags::SILENT))
         ];
+        $addPacket->syncedProperties = [];
 
         $linkPacket = new SetActorLinkPacket();
         $linkPacket->link = new EntityLink($this->entityId, $this->player->getId(), EntityLink::TYPE_RIDER, true, true, 0.0);
