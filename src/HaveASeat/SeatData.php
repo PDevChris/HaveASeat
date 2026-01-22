@@ -13,6 +13,10 @@ use pocketmine\network\mcpe\protocol\AddActorPacket;
 use pocketmine\network\mcpe\protocol\SetActorLinkPacket;
 use pocketmine\network\mcpe\protocol\RemoveActorPacket;
 use pocketmine\network\mcpe\protocol\types\entity\EntityLink;
+use pocketmine\network\mcpe\protocol\types\entity\MetadataProperty;
+use pocketmine\network\mcpe\protocol\types\entity\LongMetadataProperty;
+use pocketmine\network\mcpe\protocol\types\entity\EntityMetadataProperties;
+use pocketmine\network\mcpe\protocol\types\entity\EntityMetadataFlags;
 use pocketmine\entity\Entity;
 
 class SeatData {
@@ -50,7 +54,7 @@ class SeatData {
         $addPacket->headYaw = 0.0;
         $addPacket->attributes = [];
         $addPacket->metadata = [
-            Entity::DATA_FLAGS => [Entity::DATA_TYPE_LONG, (1 << Entity::DATA_FLAG_IMMOBILE) | (1 << Entity::DATA_FLAG_INVISIBLE) | (1 << Entity::DATA_FLAG_SILENT)]
+            MetadataProperty::create(EntityMetadataProperties::FLAGS, new LongMetadataProperty((1 << EntityMetadataFlags::IMMOBILE) | (1 << EntityMetadataFlags::INVISIBLE) | (1 << EntityMetadataFlags::SILENT)))
         ];
 
         $linkPacket = new SetActorLinkPacket();
@@ -62,7 +66,7 @@ class SeatData {
             $p->getNetworkSession()->sendDataPacket($linkPacket);
         }
 
-        $this->player->setGenericFlag(Entity::DATA_FLAG_RIDING, true);
+        $this->player->getNetworkProperties()->setGenericFlag(EntityMetadataFlags::RIDING, true);
     }
 
     public function stand(): void {
@@ -78,7 +82,7 @@ class SeatData {
             $p->getNetworkSession()->sendDataPacket($removePacket);
         }
 
-        $this->player->setGenericFlag(Entity::DATA_FLAG_RIDING, false);
+        $this->player->getNetworkProperties()->setGenericFlag(EntityMetadataFlags::RIDING, false);
     }
 
     public function sendTo(Player $target): void {
@@ -96,7 +100,7 @@ class SeatData {
         $addPacket->headYaw = 0.0;
         $addPacket->attributes = [];
         $addPacket->metadata = [
-            Entity::DATA_FLAGS => [Entity::DATA_TYPE_LONG, (1 << Entity::DATA_FLAG_IMMOBILE) | (1 << Entity::DATA_FLAG_INVISIBLE) | (1 << Entity::DATA_FLAG_SILENT)]
+            MetadataProperty::create(EntityMetadataProperties::FLAGS, new LongMetadataProperty((1 << EntityMetadataFlags::IMMOBILE) | (1 << EntityMetadataFlags::INVISIBLE) | (1 << EntityMetadataFlags::SILENT)))
         ];
 
         $linkPacket = new SetActorLinkPacket();
