@@ -223,7 +223,7 @@ class SeatPlugin extends PluginBase implements Listener {
     public function onDataPacket(DataPacketReceiveEvent $event): void {
         $packet = $event->getPacket();
         if ($packet instanceof InteractPacket && $packet->action === InteractPacket::ACTION_LEAVE_VEHICLE) {
-            $this->stand($event->getPlayer());
+            $this->stand($event->getOrigin()->getPlayer());
         }
     }
 

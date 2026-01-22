@@ -68,6 +68,7 @@ class SeatData {
         }
 
         $this->player->getNetworkProperties()->setGenericFlag(EntityMetadataFlags::RIDING, true);
+        $this->player->teleport($pos);
     }
 
     public function stand(): void {
