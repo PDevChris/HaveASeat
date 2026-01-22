@@ -27,6 +27,8 @@ class SeatPlugin extends PluginBase implements Listener {
 
     private Config $config;
     private Config $toggleConfig;
+    /** @var int[] */
+    private array $commandCooldowns = [];
     /** @var SeatData[] */
     private array $seats = [];
 
@@ -86,8 +88,21 @@ class SeatPlugin extends PluginBase implements Listener {
         return isset($this->seats[$player->getName()]);
     }
 
+    private function isBlockAllowed(Block $block): bool {
+        $allowed = $this->config->get("allowed-blocks", ["stairs"]);
+        foreach ($allowed as $type) {
+            if (strtolower($type) === "stairs" && $block instanceof Stairs) {
+                return true;
+            }
+            if (strtolower($block->getName()) === strtolower($type)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public function canSit(Player $player, Block $block): bool {
-        if (!$block instanceof Stairs) {
+        if (!$this->isBlockAllowed($block)) {
             return false;
         }
         if ($this->isSitting($player)) {
@@ -151,6 +166,14 @@ class SeatPlugin extends PluginBase implements Listener {
         $this->toggleConfig->set($name, $new);
         $this->toggleConfig->save();
         return $new;
+    }
+
+    public function getCommandCooldown(Player $player): ?int {
+        return $this->commandCooldowns[strtolower($player->getName())] ?? null;
+    }
+
+    public function setCommandCooldown(Player $player, int $time): void {
+        $this->commandCooldowns[strtolower($player->getName())] = $time;
     }
 
     // Event handlers

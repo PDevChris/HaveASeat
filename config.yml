@@ -1,10 +1,10 @@
-# HaveASeat Configuration File
+when# HaveASeat Configuration File
 
 # Apply to all worlds or specific worlds
 # Set to true to enable in all worlds, or a comma-separated list of world names (e.g., world, lobby)
 apply-worlds: true
 
-# Allow player to sit even if stair height is higher than player
+# Allow player to sit even if block height is higher than player
 allow-seat-high-height: true
 
 # Allow sitting on upside-down stairs
@@ -13,7 +13,7 @@ allow-seat-upsidedown: false
 # Allow sitting while sneaking
 allow-seat-while-sneaking: true
 
-# Player stands up if they break the stair they are sitting on
+# Player stands up if they break the block they are sitting on
 stand-up-when-break-block: true
 
 # Player takes no damage while sitting
@@ -22,12 +22,21 @@ disable-damage-when-sit: false
 # Register /sit command to toggle sitting ability
 register-sit-command: true
 
+# Cooldown for /sit command in seconds
+sit-command-cooldown: 5
+
 # Send tip message when player sits
 send-tip-when-sit: true
 
 # Tip message placeholders: @b = block name, @x @y @z = block coordinates
 send-tip-when-sit-message: "Sitting on @b at @x, @y, @z"
 
-# Message when stair is already occupied
+# Message when block is already occupied
 # Placeholders: @b = block name, @p = sitting player name
 try-to-sit-already-inuse: "This seat is used by @p"
+
+# List of blocks players can sit on
+# Use "stairs" for any stair block, or specific block names like "Quartz Slab"
+allowed-blocks:
+  - stairs
+  - "Quartz Slab"

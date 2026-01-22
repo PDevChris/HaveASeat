@@ -4,9 +4,9 @@ api: 5.0.0
 main: HaveASeat\SeatPlugin
 version: 1.0.0
 author: PDevChris
-description: Allow players to sit on stair blocks
+description: Allow players to sit on configurable blocks
 permissions:
   haveaseat.toggle:
-    description: Toggle the ability to sit on stairs
+    description: Toggle the ability to sit on blocks
     default: true
 ...

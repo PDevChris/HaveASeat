@@ -24,6 +24,16 @@ class SitCommand extends Command {
             return true;
         }
 
+        $cooldown = $this->plugin->getConfig()->get("sit-command-cooldown", 5);
+        $lastUse = $this->plugin->getCommandCooldown($sender);
+        if ($lastUse !== null && (time() - $lastUse) < $cooldown) {
+            $remaining = $cooldown - (time() - $lastUse);
+            $sender->sendMessage("§cPlease wait $remaining seconds before using this command again.");
+            return true;
+        }
+
+        $this->plugin->setCommandCooldown($sender, time());
+
         $enabled = $this->plugin->toggleSitting($sender);
         $sender->sendMessage($enabled ? "§aYou can now sit on stairs." : "§cYou can no longer sit on stairs.");
         return true;
