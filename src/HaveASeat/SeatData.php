@@ -24,11 +24,13 @@ class SeatData {
     private Player $player;
     private Block $block;
     private int $entityId;
+    private Vector3 $originalPosition;
 
     public function __construct(Player $player, Block $block) {
         $this->player = $player;
         $this->block = $block;
         $this->entityId = mt_rand(1000000, 9999999); // Unique fake entity ID
+        $this->originalPosition = $player->getPosition()->asVector3();
     }
 
     public function getPlayer(): Player {
@@ -85,6 +87,10 @@ class SeatData {
         }
 
         $this->player->getNetworkProperties()->setGenericFlag(EntityMetadataFlags::RIDING, false);
+        
+        // Teleport player to standing position (slightly above the sitting position)
+        $standPos = $this->block->getPosition()->add(0.5, 1, 0.5);
+        $this->player->teleport($standPos->add(0, 0.5, 0));
     }
 
     public function sendTo(Player $target): void {
