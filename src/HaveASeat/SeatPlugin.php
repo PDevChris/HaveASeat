@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HaveASeat;
+namespace PDevChris\HaveASeat;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
@@ -39,7 +39,7 @@ class SeatPlugin extends PluginBase implements Listener {
         $this->toggleConfig = new Config($this->getDataFolder() . "toggle.yml", Config::YAML);
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         if ($this->config->get("register-sit-command", true)) {
-            $this->getServer()->getCommandMap()->register("sit", new SitCommand($this));
+            $this->getServer()->getCommandMap()->register($this->getName(), new SitCommand($this));
         }
     }
 

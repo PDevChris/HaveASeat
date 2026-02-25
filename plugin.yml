@@ -1,7 +1,7 @@
 ---
 name: HaveASeat
 api: 5.0.0
-main: HaveASeat\SeatPlugin
+main: PDevChris\HaveASeat\SeatPlugin
 version: 1.0.0
 author: PDevChris
 description: Allow players to sit on configurable blocks

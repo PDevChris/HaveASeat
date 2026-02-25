@@ -2,19 +2,24 @@
 
 declare(strict_types=1);
 
-namespace HaveASeat;
+namespace PDevChris\HaveASeat;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\plugin\PluginOwned;
+use pocketmine\plugin\PluginOwnedTrait;
 use pocketmine\player\Player;
 
-class SitCommand extends Command {
+class SitCommand extends Command implements PluginOwned {
+
+    use PluginOwnedTrait;
 
     private SeatPlugin $plugin;
 
     public function __construct(SeatPlugin $plugin) {
         parent::__construct("sit", "Toggle the ability to sit on stairs");
         $this->plugin = $plugin;
+        $this->owningPlugin = $plugin;
         $this->setPermission("haveaseat.toggle");
     }
 

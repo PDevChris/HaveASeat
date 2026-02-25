@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HaveASeat;
+namespace PDevChris\HaveASeat;
 
 use pocketmine\player\Player;
 use pocketmine\block\Block;
